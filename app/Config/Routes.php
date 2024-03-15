@@ -50,6 +50,7 @@ $routes->get('/admin5', 'Admin\Admin::admin5');
 $routes->get('/help', 'Admin\Admin::help');
 $routes->get('/addrole', 'Admin\Admin::addRole');
 $routes->get('/removerole', 'Admin\Admin::removeRole');
+$routes->get('/getstartammount', 'Admin\Admin::getStartAmmount');
 
 
 service('auth')->routes($routes);

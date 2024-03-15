@@ -21,12 +21,12 @@ class Admin extends BaseController
 
     public function index()
     {
-        return view('Admin/index', [
-            'user' => $this->user,
-            'session' => $this->session,
-            'menu' => 1,
-            'submenu1' => 0,
-            'submenu2' => 0,
+        return view('Admin/index',[
+                'user' => $this->user,
+                'session' => $this->session,
+                'menu' => 1,
+                'submenu1' => 0,
+                'submenu2' => 0,
         ]);
     }
 
@@ -329,6 +329,19 @@ class Admin extends BaseController
             'menu' => 6,
             'submenu1' => 0,
             'submenu2' => 0,
+        ]);
+    }
+
+    public function getStartAmmount()
+    {
+
+        return view('Admin/index',[
+            'user' => $this->user,
+            'session' => $this->session,
+            'menu' => 1,
+            'submenu1' => 0,
+            'submenu2' => 0,
+            'startammount' => true,
         ]);
     }
 
