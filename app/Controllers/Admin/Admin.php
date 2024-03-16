@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Entities\Category;
 use App\Models\CategoryModel;
+use CodeIgniter\Database\RawSql;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use Config\Services;
 
@@ -343,6 +344,37 @@ class Admin extends BaseController
             'submenu2' => 0,
             'startammount' => true,
         ]);
+
+        // $ptn = "/\-?\d+[\.\,]\d{2}/";
+    }
+
+    public function setAmmount()
+    {
+        $user_id = auth()->user()->id;
+        $now = date('Y-m-d H:i:s');
+        $rules = [
+            'ammount' => 'required|regex_match[/^\-?\d+[\.\,]\d{2}$/]'
+        ];
+
+        $data = $this->request->getPost(array_keys($rules));
+        if(!$this->validateData($data,$rules)) {
+            return redirect()->back()->with("errors",$this->validator->getErrors())->withInput();
+        }
+        $ammount = $this->request->getPost('ammount');
+        // eventuelles Komma in Punkt umwandeln
+        $ammount = str_replace(",",".", $ammount);
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('ammount');
+        $data = [
+            'id' => new RawSql('DEFAULT'),
+            'user_id' => $user_id,
+            'ammount' => $ammount,
+            'zeit' => $now
+        ];
+        $builder->insert($data);
+        return redirect()->to("/dashboard");
+
     }
 
     public function addRole()

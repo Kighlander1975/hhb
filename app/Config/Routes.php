@@ -51,7 +51,7 @@ $routes->get('/help', 'Admin\Admin::help');
 $routes->get('/addrole', 'Admin\Admin::addRole');
 $routes->get('/removerole', 'Admin\Admin::removeRole');
 $routes->get('/getstartammount', 'Admin\Admin::getStartAmmount');
-
+$routes->post('/setammount', 'Admin\Admin::setAmmount');
 
 service('auth')->routes($routes);
 

@@ -44,7 +44,13 @@ class Filters extends BaseConfig
             // 'invalidchars',
             'startammount' => [
                 'except' => [
-                    'getstartammount'
+                    'getstartammount',
+                    'login*',
+                    'register',
+                    'auth/a/*',
+                    '/',
+                    'logout',
+                    'setammount',
                 ],
             ],
         ],
