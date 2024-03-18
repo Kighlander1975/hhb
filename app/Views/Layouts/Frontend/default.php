@@ -846,23 +846,69 @@
 
                         <!-- Email -->
                         <div class="mb-2">
-                            <input type="email" class="form-control" name="email" inputmode="email" autocomplete="email" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>" required />
+                            <input type="email" class="form-control" name="email" inputmode="email" autocomplete="email" placeholder="<?= lang('Auth.email') ?>*" value="<?= old('email') ?>" required />
                         </div>
 
                         <!-- Username -->
                         <div class="mb-4">
-                            <input type="text" class="form-control" name="username" inputmode="text" autocomplete="username" placeholder="<?= lang('Auth.username') ?>" value="<?= old('username') ?>" required />
+                            <input type="text" class="form-control" name="username" inputmode="text" autocomplete="username" placeholder="<?= lang('Auth.username') ?>*" value="<?= old('username') ?>" required />
                         </div>
 
                         <!-- Password -->
                         <div class="mb-2">
-                            <input type="password" class="form-control" name="password" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.password') ?>" required />
+                            <input type="password" class="form-control" name="password" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.password') ?>*" required />
                         </div>
 
                         <!-- Password (Again) -->
-                        <div class="mb-5">
-                            <input type="password" class="form-control" name="password_confirm" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.passwordConfirm') ?>" required />
+                        <div class="mb-4">
+                            <input type="password" class="form-control" name="password_confirm" inputmode="text" autocomplete="new-password" placeholder="<?= lang('Auth.passwordConfirm') ?>*" required />
                         </div>
+
+                        <!-- Optionale Angaben -->
+                        <hr class="border border-primary border-2 opacity-50">
+                        <h1 class="modal-title fs-6 mb-4">Optionale Angaben</h1>
+
+                        <div class="mb-2">
+                            <input type="text" class="form-control" name="firstname" inputmode="text" placeholder="Vorname" value="<?= old('firstname') ?>" />
+                        </div>
+
+                        <div class="mb-2">
+                            <input type="text" class="form-control" name="lastname" inputmode="text" placeholder="Nachname" value="<?= old('lastname') ?>" />
+                        </div>
+
+                        <div class="mb-2">
+                            <input type="text" class="form-control" name="street" inputmode="text" placeholder="Straße und Hausnummer" value="<?= old('street') ?>" />
+                        </div>
+
+                        <div class="row g-3 align-items-center mb-2">
+                            <div class="col-sm">
+                                <input type="text" class="form-control" name="zipcode" inputmode="text" placeholder="PLZ" value="<?= old('zipcode') ?>" />
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="city" inputmode="text" placeholder="Stadt" value="<?= old('city') ?>" />
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <input type="text" class="form-control" name="country" inputmode="text" placeholder="Land" value="<?= old('country') ?>" />
+                        </div>
+
+                        <?php
+                        $options = [
+                                'n/a' => 'n/a',
+                                'div' => 'Divers',
+                                'male' => 'männlich',
+                                'female' => 'weiblich'
+                        ];
+                        echo form_dropdown('gender',$options,'n/a',['class' => 'form-select mb-2']);
+                        ?>
+
+                        <div class="mb-1">
+                            <textarea class="form-control" name="biography" rows="3" id="biography" placeholder="Über mich..."><?= esc(old('biography')) ?></textarea>
+                        </div>
+                        <p class="mb-4 text-muted" style="font-size:0.8em">
+                            Alle mit einem * markierte Felder sind Pflichtfelder
+                        </p>
 
                         <div class="d-grid col-12 col-md-8 mx-auto m-3">
                             <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.register') ?></button>

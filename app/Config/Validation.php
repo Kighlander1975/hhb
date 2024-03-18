@@ -61,12 +61,40 @@ class Validation extends BaseConfig
             ],
         ],
         'password' => [
-            'label' =>  'Auth.password',
+            'label' => 'Auth.password',
             'rules' => 'required|strong_password',
         ],
         'password_confirm' => [
-            'label' =>  'Auth.passwordConfirm',
+            'label' => 'Auth.passwordConfirm',
             'rules' => 'required|matches[password]',
+        ],
+        'firstname' => [
+            'label' => 'Vorname',
+            'rulez' => 'permit_empty|max_length[30]',
+        ],
+        'lastname' => [
+            'label' => 'Nachname',
+            'rulez' => 'permit_empty|max_length[30]',
+        ],
+        'street' => [
+            'label' => 'Straße und Hausnummer',
+            'rulez' => 'permit_empty|max_length[60]',
+        ],
+        'zipcode' => [
+            'label' => 'Postleitzahl',
+            'rulez' => 'permit_empty|max_length[5]',
+        ],
+        'country' => [
+            'label' => 'Land',
+            'rulez' => 'permit_empty|max_length[50]',
+        ],
+        'biography' => [
+            'label' => 'Geburtstag',
+            'rulez' => 'permit_empty|max_length[10]',
+        ],
+        'gender' => [
+            'label' => 'Geschlecht',
+            'rulez' => 'permit_empty|max_length[6]',
         ],
     ];
 }
