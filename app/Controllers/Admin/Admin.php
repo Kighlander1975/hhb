@@ -369,9 +369,10 @@ class Admin extends BaseController
         $data = [
             'id' => new RawSql('DEFAULT'),
             'user_id' => $user_id,
-            'ammount' => $ammount,
+            'ammount' => (float)$ammount,
             'zeit' => $now
         ];
+        // dd($data);
         $builder->insert($data);
         return redirect()->to("/dashboard");
 

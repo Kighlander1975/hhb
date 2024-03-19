@@ -120,7 +120,7 @@
                                         Willkommen beim HausHaltsBuch</p>
                                     <h1 class="display-1 mb-4 animated slideInDown text-dark">Dein persönliches HausHaltsBuch
                                     </h1>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Erfahre mehr...</a>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#registerModal" class="btn btn-primary py-3 px-5 animated slideInDown">Jetzt registrieren...</button>
                                 </div>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
                                     <p class="d-inline-block border border-white rounded text-primary fw-semi-bold py-1 px-3 animated slideInDown">
                                         Willkommen beim HausHaltsBuch</p>
                                     <h1 class="display-1 mb-4 animated slideInDown text-dark">Behalte Deine Einnahmen und Ausgaben im Blick</h1>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Erfahre mehr...</a>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#registerModal" class="btn btn-primary py-3 px-5 animated slideInDown">Jetzt registrieren...</button>
                                 </div>
                             </div>
                         </div>

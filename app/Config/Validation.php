@@ -69,32 +69,40 @@ class Validation extends BaseConfig
             'rules' => 'required|matches[password]',
         ],
         'firstname' => [
-            'label' => 'Vorname',
-            'rulez' => 'permit_empty|max_length[30]',
+            'label' => 'firstname',
+            'rules' => 'permit_empty|max_length[30]',
         ],
         'lastname' => [
-            'label' => 'Nachname',
-            'rulez' => 'permit_empty|max_length[30]',
+            'label' => 'lastname',
+            'rules' => 'permit_empty|max_length[30]',
         ],
         'street' => [
-            'label' => 'Straße und Hausnummer',
-            'rulez' => 'permit_empty|max_length[60]',
+            'label' => 'street',
+            'rules' => 'permit_empty|max_length[60]',
         ],
         'zipcode' => [
-            'label' => 'Postleitzahl',
-            'rulez' => 'permit_empty|max_length[5]',
+            'label' => 'zipcode',
+            'rules' => 'permit_empty|max_length[5]',
+        ],
+        'city' => [
+            'label' => 'city',
+            'rules' => 'permit_empty|max_length[50]',
         ],
         'country' => [
-            'label' => 'Land',
-            'rulez' => 'permit_empty|max_length[50]',
+            'label' => 'country',
+            'rules' => 'permit_empty|max_length[50]',
         ],
-        'biography' => [
-            'label' => 'Geburtstag',
-            'rulez' => 'permit_empty|max_length[10]',
+        'dateofbirth' => [
+            'label' => 'dateofbirth',
+            'rules' => 'permit_empty|max_length[10]',
         ],
         'gender' => [
-            'label' => 'Geschlecht',
-            'rulez' => 'permit_empty|max_length[6]',
+            'label' => 'gender',
+            'rules' => 'permit_empty|max_length[6]',
+        ],
+        'biography' => [
+            'label' => 'biography',
+            'rules' => 'permit_empty|max_length[5000]',
         ],
     ];
 }
