@@ -4,25 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class BuchungenModel extends Model
+class AmmountModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'buchungen';
+    protected $table            = 'ammount';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
-        'user_id',
-        'e_a',
-        'cat',
-        'subcat',
-        'ammount',
-        'text',
-        'zeit',
-    ];
+    protected $allowedFields    = ['user_id,ammount,zeit'];
 
     // Dates
     protected $useTimestamps = false;
@@ -48,6 +40,4 @@ class BuchungenModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    // Methods
-    
 }

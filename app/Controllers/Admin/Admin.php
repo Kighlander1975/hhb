@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Entities\Category;
 use App\Models\CategoryModel;
+use App\Models\AmmountModel;
 use CodeIgniter\Database\RawSql;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use Config\Services;
@@ -13,11 +14,15 @@ class Admin extends BaseController
 {
     private $user;
     private $session;
+    private $ammountModel;
+    protected $currentammount;
 
     public function __construct()
     {
         $this->user = auth()->user();
         $this->session = Services::session();
+        $konto = getUserAmmount($this->user->id);
+        $this->currentammount = $konto->ammount;
     }
 
     public function index()
@@ -28,6 +33,7 @@ class Admin extends BaseController
                 'menu' => 1,
                 'submenu1' => 0,
                 'submenu2' => 0,
+                'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -39,6 +45,7 @@ class Admin extends BaseController
             'menu' => 2,
             'submenu1' => 0,
             'submenu2' => 0,
+            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -50,6 +57,7 @@ class Admin extends BaseController
             'menu' => 3,
             'submenu1' => 0,
             'submenu2' => 0,
+            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -67,6 +75,7 @@ class Admin extends BaseController
             'submenu2' => 0,
             'categories' => $categories,
             'pager' => $catModel->pager,
+            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -132,6 +141,7 @@ class Admin extends BaseController
             'cat_id_ein' => $ein,
             'cat_id_aus' => $aus,
             'cat_options' => [$ein => $ein." Einnahme", $aus => $aus." Ausgabe"],
+            'currentammount' => $this->currentammount,
         ]);
     }
     public function create_new_cat()
@@ -175,6 +185,7 @@ class Admin extends BaseController
             'menu' => 4,
             'submenu1' => 3,
             'submenu2' => 0,
+            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -190,6 +201,7 @@ class Admin extends BaseController
             'menu' => 4,
             'submenu1' => 1,
             'submenu2' => 0,
+            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -205,6 +217,7 @@ class Admin extends BaseController
             'menu' => 5,
             'submenu1' => 0,
             'submenu2' => 1,
+            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -220,6 +233,7 @@ class Admin extends BaseController
             'menu' => 5,
             'submenu1' => 0,
             'submenu2' => 2,
+            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -235,6 +249,7 @@ class Admin extends BaseController
             'menu' => 5,
             'submenu1' => 0,
             'submenu2' => 3,
+            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -255,6 +270,7 @@ class Admin extends BaseController
             'submenu1' => 0,
             'submenu2' => 4,
             'unconfirmed' => $unconfirmed,
+            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -302,6 +318,7 @@ class Admin extends BaseController
             'submenu1' => 0,
             'submenu2' => 4,
             'category' => $category,
+            'currentammount' => $this->currentammount,
         ]);
 
 
@@ -319,6 +336,7 @@ class Admin extends BaseController
             'menu' => 5,
             'submenu1' => 0,
             'submenu2' => 5,
+            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -330,6 +348,7 @@ class Admin extends BaseController
             'menu' => 6,
             'submenu1' => 0,
             'submenu2' => 0,
+            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -343,6 +362,7 @@ class Admin extends BaseController
             'submenu1' => 0,
             'submenu2' => 0,
             'startammount' => true,
+            'currentammount' => $this->currentammount,
         ]);
 
         // $ptn = "/\-?\d+[\.\,]\d{2}/";

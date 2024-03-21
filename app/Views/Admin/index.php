@@ -29,7 +29,7 @@
         <div class="col-6 col-lg-3">
             <div class="app-card app-card-stat shadow-sm h-100">
                 <div class="app-card-body p-3 p-lg-4">
-                    <h4 class="stats-type mb-1">Einnahmen</h4>
+                    <h4 class="stats-type mb-1">Einnahmen (<?= getCountBookings(user_id(),"e") ?>)</h4>
                     <div class="stats-figure">€ <?= number_format(3628, 2, ",", ".") ?></div>
                     <div class="stats-meta text-success">
                         <i class="fa-solid fa-arrow-up"></i>
@@ -43,7 +43,7 @@
         <div class="col-6 col-lg-3">
             <div class="app-card app-card-stat shadow-sm h-100">
                 <div class="app-card-body p-3 p-lg-4">
-                    <h4 class="stats-type mb-1">Ausgaben</h4>
+                    <h4 class="stats-type mb-1">Ausgaben (<?= getCountBookings(user_id(),"a") ?>)</h4>
                     <div class="stats-figure">€ <?= number_format(2250, 2, ",", ".") ?></div>
                     <div class="stats-meta text-success">
                         <i class="fa-solid fa-arrow-down"></i>
@@ -54,11 +54,13 @@
             </div><!--//app-card-->
         </div><!--//col-->
         <div class="col-6 col-lg-3">
-            <div class="app-card app-card-stat shadow-sm h-100">
+            <div class="app-card app-card-stat shadow-sm h-100 <?= getUserAmmount(user_id())->ammount >= 0 ? "bg-success":"bg-danger" ?>">
                 <div class="app-card-body p-3 p-lg-4">
-                    <h4 class="stats-type mb-1">Saldo</h4>
-                    <div class="stats-figure">€ <?= number_format(3628 - 2250, 2, ",", ".") ?></div>
-                    <div class="stats-meta">
+                    <h4 class="stats-type mb-1 text-white">Saldo</h4>
+                    <div class="stats-figure">€ <?= number_format(getUserAmmount(user_id())->ammount, 2, ",", ".") ?></div>
+                    <div class="stats-meta text-black-50">
+                        <i class="fa-solid fa-clock"></i>
+                        am <?= deutschesDatum(getUserAmmount(user_id())->zeit) ?>
                     </div>
                 </div><!--//app-card-body-->
                 <a class="app-card-link-mask" href="#"></a>
@@ -68,7 +70,7 @@
             <div class="app-card app-card-stat shadow-sm h-100">
                 <div class="app-card-body p-3 p-lg-4">
                     <h4 class="stats-type mb-1">Buchungen</h4>
-                    <div class="stats-figure">6</div>
+                    <div class="stats-figure"><?= getCountBookings(user_id()) ?></div>
                 </div><!--//app-card-body-->
                 <a class="app-card-link-mask" href="#"></a>
             </div><!--//app-card-->
@@ -101,7 +103,6 @@
             </div><!--//app-card-->
         </div><!--//col-->
 
-
         <div class="col-12 col-lg-6">
             <div class="app-card app-card-chart h-100 shadow-sm">
                 <div class="app-card-header p-3">
@@ -125,9 +126,7 @@
         </div><!--//col-->
     </div><!--//row-->
 
-
     <div class="row g-4 mb-4">
-
         <div class="col-12 col-lg-4">
             <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">
                 <div class="app-card-header p-3 border-bottom-0">
