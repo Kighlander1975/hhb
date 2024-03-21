@@ -62,7 +62,7 @@
                             <?php  */ ?>
                             <div class="app-utilities col-auto">
                                 <div class="app-utility-item">
-                                    Kontostand: EUR <span class="px-2 text-white <?= $currentammount  >= 0 ? "bg-success" : "bg-danger"?>"><?= $currentammount ?></span> |
+                                    Kontostand: EUR <span class="px-2 text-white <?= getUserAmmount(user_id())->ammount >= 0 ? "bg-success" : "bg-danger"?>"><?= getUserAmmount(user_id())->ammount ?></span> |
                                     Role:
                                     <?php
                                         $rollen = $user->getGroups();

@@ -32,7 +32,31 @@ if( ! function_exists('getCountBookings')) {
     }
 }
 
+if( ! function_exists('sumBookings')) {
 
+    function sumBookings($id,$e_a)
+    {
+        $db = \Config\Database::connect();
+        $month = (int)date('m');
+        $sql = "SELECT zeit,SUM(ammount) AS summe FROM buchungen WHERE MONTH(zeit) = ".$month." AND user_id = '".$id."' AND e_a = '".$e_a."'";
+        $query = $db->query($sql);
+        $result = $query->getRow();
+        $summe = $result->summe;
+        return $summe;
+    }
+}
+
+if( ! function_exists('lastBookings')) {
+
+    function lastBookings($id)
+    {
+        $db = \Config\Database::connect();
+        $sql = "SELECT * FROM buchungen WHERE user_id = '".$id."' ORDER BY zeit LIMIT 3";
+        $query = $db->query($sql);
+        $result = $query->getResult();
+        return $result;
+    }
+}
 
 if( ! function_exists('deutschesDatum')) {
 

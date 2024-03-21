@@ -30,7 +30,7 @@
             <div class="app-card app-card-stat shadow-sm h-100">
                 <div class="app-card-body p-3 p-lg-4">
                     <h4 class="stats-type mb-1">Einnahmen (<?= getCountBookings(user_id(),"e") ?>)</h4>
-                    <div class="stats-figure">€ <?= number_format(3628, 2, ",", ".") ?></div>
+                    <div class="stats-figure">€ <?= number_format(sumBookings(user_id(),"e"), 2, ",", ".") ?></div>
                     <div class="stats-meta text-success">
                         <i class="fa-solid fa-arrow-up"></i>
                         20% als Vormonat
@@ -44,7 +44,7 @@
             <div class="app-card app-card-stat shadow-sm h-100">
                 <div class="app-card-body p-3 p-lg-4">
                     <h4 class="stats-type mb-1">Ausgaben (<?= getCountBookings(user_id(),"a") ?>)</h4>
-                    <div class="stats-figure">€ <?= number_format(2250, 2, ",", ".") ?></div>
+                    <div class="stats-figure">€ <?= number_format(sumBookings(user_id(),"a"), 2, ",", ".") ?></div>
                     <div class="stats-meta text-success">
                         <i class="fa-solid fa-arrow-down"></i>
                         5% als Vormonat
@@ -78,6 +78,11 @@
     </div><!--//row-->
     <div class="col-12 shadow-sm rounded my-1 bg-body p-2 mb-4">
         <h1 class="app-page-title">Letzte Buchungen</h1>
+        <?php if(count($lastBookings) >0) : ?>
+            Buchungen vorhanden
+        <?php else : ?>
+            Keine Buchungen vorhanden
+        <?php endif; ?>
     </div>
 
     <div class="row g-4 mb-4">

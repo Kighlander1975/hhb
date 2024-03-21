@@ -33,7 +33,7 @@ class Admin extends BaseController
                 'menu' => 1,
                 'submenu1' => 0,
                 'submenu2' => 0,
-                'currentammount' => $this->currentammount,
+                'lastBookings' => lastBookings(user_id()),
         ]);
     }
 
@@ -45,7 +45,6 @@ class Admin extends BaseController
             'menu' => 2,
             'submenu1' => 0,
             'submenu2' => 0,
-            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -57,7 +56,6 @@ class Admin extends BaseController
             'menu' => 3,
             'submenu1' => 0,
             'submenu2' => 0,
-            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -75,7 +73,6 @@ class Admin extends BaseController
             'submenu2' => 0,
             'categories' => $categories,
             'pager' => $catModel->pager,
-            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -141,7 +138,6 @@ class Admin extends BaseController
             'cat_id_ein' => $ein,
             'cat_id_aus' => $aus,
             'cat_options' => [$ein => $ein." Einnahme", $aus => $aus." Ausgabe"],
-            'currentammount' => $this->currentammount,
         ]);
     }
     public function create_new_cat()
@@ -185,7 +181,6 @@ class Admin extends BaseController
             'menu' => 4,
             'submenu1' => 3,
             'submenu2' => 0,
-            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -201,7 +196,6 @@ class Admin extends BaseController
             'menu' => 4,
             'submenu1' => 1,
             'submenu2' => 0,
-            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -217,7 +211,6 @@ class Admin extends BaseController
             'menu' => 5,
             'submenu1' => 0,
             'submenu2' => 1,
-            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -233,7 +226,6 @@ class Admin extends BaseController
             'menu' => 5,
             'submenu1' => 0,
             'submenu2' => 2,
-            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -249,7 +241,6 @@ class Admin extends BaseController
             'menu' => 5,
             'submenu1' => 0,
             'submenu2' => 3,
-            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -270,7 +261,6 @@ class Admin extends BaseController
             'submenu1' => 0,
             'submenu2' => 4,
             'unconfirmed' => $unconfirmed,
-            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -318,7 +308,6 @@ class Admin extends BaseController
             'submenu1' => 0,
             'submenu2' => 4,
             'category' => $category,
-            'currentammount' => $this->currentammount,
         ]);
 
 
@@ -348,7 +337,6 @@ class Admin extends BaseController
             'menu' => 6,
             'submenu1' => 0,
             'submenu2' => 0,
-            'currentammount' => $this->currentammount,
         ]);
     }
 
@@ -362,7 +350,6 @@ class Admin extends BaseController
             'submenu1' => 0,
             'submenu2' => 0,
             'startammount' => true,
-            'currentammount' => $this->currentammount,
         ]);
 
         // $ptn = "/\-?\d+[\.\,]\d{2}/";
