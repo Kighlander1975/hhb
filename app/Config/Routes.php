@@ -52,8 +52,12 @@ $routes->get('/addrole', 'Admin\Admin::addRole');
 $routes->get('/removerole', 'Admin\Admin::removeRole');
 $routes->get('/getstartammount', 'Admin\Admin::getStartAmmount');
 $routes->post('/setammount', 'Admin\Admin::setAmmount');
+$routes->post('/step1', 'Bookings::step1');
 
-service('auth')->routes($routes);
+service('auth')->routes($routes, ['except' => ['login','register']]);
+
+$routes->get('login', 'Home::index');
+$routes->get('register', 'Home::index');
 
 /*
  * --------------------------------------------------------------------

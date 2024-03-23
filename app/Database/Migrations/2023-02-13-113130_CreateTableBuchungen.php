@@ -29,17 +29,18 @@ class CreateTableBuchungen extends Migration
             'cat' => [
                 'type'              => 'VARCHAR',
                 'constraint'        => 4,
-                'default'           => '4900'
+                'null'              => true,
+                'default'           => null,
             ],
             'subcat' => [
                 'type'              => 'VARCHAR',
                 'constraint'        => 4,
-                'default'           => '4900'
+                'null'              => true,
+                'default'           => null,
             ],
             'ammount' => [
                 'type'              => 'FLOAT',
                 'constraint'        => '15',
-                'unsigned'          => true,
                 'default'           => 0,
             ],
             'text' => [

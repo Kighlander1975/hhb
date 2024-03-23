@@ -2,10 +2,11 @@
 
 <?= $this->section('content') ?>
 
-<div class="container-xl">
+    <h1>Neue Buchung</h1>
+    <?= form_open('step1') ?>
 
-    <h1 class="app-page-title">Neue Buchung</h1>
 
-</div><!--//container-fluid-->
+
+    <?= form_close() ?>
 
 <?= $this->endSection() ?>

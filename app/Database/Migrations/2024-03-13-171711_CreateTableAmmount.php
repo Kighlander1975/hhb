@@ -24,7 +24,6 @@ class CreateTableAmmount extends Migration
             'ammount' => [
                 'type'              => 'FLOAT',
                 'constraint'        => '15',
-                'unsigned'          => true,
                 'null'              => true,
                 'default'           => 0,
             ],

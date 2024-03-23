@@ -5,7 +5,6 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Entities\Category;
 use App\Models\CategoryModel;
-use App\Models\AmmountModel;
 use CodeIgniter\Database\RawSql;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use Config\Services;
@@ -14,7 +13,6 @@ class Admin extends BaseController
 {
     private $user;
     private $session;
-    private $ammountModel;
     protected $currentammount;
 
     public function __construct()
@@ -39,12 +37,27 @@ class Admin extends BaseController
 
     public function transaction()
     {
+        if($this->session->has('newBooking')) {
+            // angefangene Buchuung vorhanden, Seite aufrufen
+            $step = $this->session->newBooking['step'];
+            $page = "step".$step;
+            return redirect()->to($page);
+        }
+        $catModel = new CategoryModel();
+        $categories = $catModel->getFullCats();
+        $cats = [];
+        $cats['0000'] = "Neue Kategorie";
+        foreach($categories as $category) {
+            $cats[$category->cat_id] = $category->cat_text;
+        }
+
         return view('Admin/transaction', [
             'user' => $this->user,
             'session' => $this->session,
             'menu' => 2,
             'submenu1' => 0,
             'submenu2' => 0,
+            'categories' => $cats,
         ]);
     }
 

@@ -97,5 +97,6 @@ class Autoload extends AutoloadConfig
         'form',
         'konto',
         'auth',
+        'setting'
     ];
 }
