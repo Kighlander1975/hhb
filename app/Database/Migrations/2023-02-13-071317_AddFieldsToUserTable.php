@@ -44,7 +44,7 @@ class AddFieldsToUserTable extends Migration
                 'null'              => true,
             ],
             'dateofbirth' => [
-                'type'              => 'DATETIME',
+                'type'              => 'DATE',
                 'null'              => true,
             ],
             'gender' => [

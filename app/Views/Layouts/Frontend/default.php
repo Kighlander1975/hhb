@@ -903,6 +903,11 @@
                         echo form_dropdown('gender',$options,'n/a',['class' => 'form-select mb-2']);
                         ?>
 
+                        <div class="mb-2">
+                            <label for="dateofbirth">Geburtstag</label>
+                            <input id="dateofbirth" name="dateofbirth" class="form-control" type="date">
+                        </div>
+
                         <div class="mb-1">
                             <textarea class="form-control" name="biography" rows="3" id="biography" placeholder="Über mich..."><?= esc(old('biography')) ?></textarea>
                         </div>

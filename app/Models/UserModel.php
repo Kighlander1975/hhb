@@ -10,6 +10,7 @@ class UserModel extends ShieldUserModel
 {
     protected function initialize(): void
     {
+        $this->table = 'users';
         $this->allowedFields = [
             ...$this->allowedFields,
             'firstname',
