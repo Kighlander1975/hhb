@@ -352,14 +352,18 @@ class Admin extends BaseController
     public function getStartAmmount()
     {
 
-        return view('Admin/index',[
-            'user' => $this->user,
-            'session' => $this->session,
-            'menu' => 1,
-            'submenu1' => 0,
-            'submenu2' => 0,
-            'startammount' => true,
-        ]);
+        if(getCountBookings(user_id()) === 0){
+            return view('Admin/index',[
+                'user' => $this->user,
+                'session' => $this->session,
+                'menu' => 1,
+                'submenu1' => 0,
+                'submenu2' => 0,
+                'startammount' => true,
+            ]);
+        } else {
+            return redirect()->to('dashboard')->with('warning','Buchungen vorhanden, Kontostand NICHT mehr änderbar');
+        }
 
         // $ptn = "/\-?\d+[\.\,]\d{2}/";
     }
@@ -383,13 +387,18 @@ class Admin extends BaseController
         $db = \Config\Database::connect();
         $builder = $db->table('ammount');
         $data = [
-            'id' => new RawSql('DEFAULT'),
             'user_id' => $user_id,
             'ammount' => (float)$ammount,
             'zeit' => $now
         ];
         // dd($data);
-        $builder->insert($data);
+        if(ammountexists(user_id())) {
+            unset($data['user_id']);
+            $builder->where('user_id',user_id())->update($data);
+        } else {
+            $builder->insert($data);
+        }
+
         return redirect()->to("/dashboard");
 
     }

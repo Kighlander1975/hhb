@@ -17,6 +17,18 @@ if( ! function_exists('getUserAmmount')) {
     }
 }
 
+if( ! function_exists('ammountexists')){
+
+    function ammountexists($id)
+    {
+        $db = \Config\Database::connect();
+        $sql = "SELECT ammount,zeit FROM ammount WHERE user_id = '".$id."'";
+        $query = $db->query($sql);
+        $result = $query->getRow();
+        return ($result === null) ? false : true;
+    }
+}
+
 if( ! function_exists('getCountBookings')) {
 
     function getCountBookings($id,$e_a=null)

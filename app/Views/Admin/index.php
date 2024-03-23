@@ -81,7 +81,9 @@
         <?php if(isset($lastBookings) && count($lastBookings) >0) : ?>
             Buchungen vorhanden
         <?php else : ?>
-            Keine Buchungen vorhanden
+            <p>Keine Buchungen vorhanden</p>
+            <p>Solange noch keine Buchungen vorgenommen wurden, kann der initiale Kontostand noch geändert werden.</p>
+            <a href="<?= site_url('getstartammount') ?>" class="btn btn-primary">Kontostand ändern</a>
         <?php endif; ?>
     </div>
 
