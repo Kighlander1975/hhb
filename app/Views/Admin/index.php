@@ -78,7 +78,7 @@
     </div><!--//row-->
     <div class="col-12 shadow-sm rounded my-1 bg-body p-2 mb-4">
         <h1 class="app-page-title">Letzte Buchungen</h1>
-        <?php if(count($lastBookings) >0) : ?>
+        <?php if(isset($lastBookings) && count($lastBookings) >0) : ?>
             Buchungen vorhanden
         <?php else : ?>
             Keine Buchungen vorhanden

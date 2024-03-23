@@ -13,14 +13,11 @@ class Admin extends BaseController
 {
     private $user;
     private $session;
-    protected $currentammount;
 
     public function __construct()
     {
         $this->user = auth()->user();
         $this->session = Services::session();
-        $konto = getUserAmmount($this->user->id);
-        $this->currentammount = $konto->ammount;
     }
 
     public function index()
@@ -338,7 +335,6 @@ class Admin extends BaseController
             'menu' => 5,
             'submenu1' => 0,
             'submenu2' => 5,
-            'currentammount' => $this->currentammount,
         ]);
     }
 

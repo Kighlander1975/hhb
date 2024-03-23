@@ -58,6 +58,8 @@ service('auth')->routes($routes, ['except' => ['login','register']]);
 
 $routes->get('login', 'Home::login');
 $routes->get('register', 'Home::register');
+$routes->post('login', '\CodeIgniter\Shield\Controllers\LoginController::loginAction');
+$routes->post('register', '\CodeIgniter\Shield\Controllers\RegisterController::registerAction');
 
 /*
  * --------------------------------------------------------------------

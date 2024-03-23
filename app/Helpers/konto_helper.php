@@ -8,7 +8,12 @@ if( ! function_exists('getUserAmmount')) {
         $sql = "SELECT ammount,zeit FROM ammount WHERE user_id = '".$id."'";
         $query = $db->query($sql);
         $result = $query->getRow();
-        return $result;
+        if($result === null) {
+            $ret = (object)['ammount' => 0.00,'zeit' => date('d.m.Y')];
+        } else {
+            $ret = $result;
+        }
+        return $ret;
     }
 }
 

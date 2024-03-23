@@ -74,7 +74,7 @@
                                 <a href="#" class="dropdown-item">Nachrichten</a>
                                 <a href="#" class="dropdown-item">Mein Haushaltsbuch</a>
                                 <hr class="dropdown-divider">
-                                <?php if (auth()->user()->inGroup('superadmin')) : ?>
+                                <?php if (auth()->user()->inGroup('superadmin','user')) : ?>
                                     <a href="<?= site_url('/dashboard') ?>" class="dropdown-item">Dashboard</a>
                                     <hr class="dropdown-divider">
                                 <?php endif; ?>

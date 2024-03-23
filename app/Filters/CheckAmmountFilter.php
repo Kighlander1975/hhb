@@ -32,8 +32,8 @@ class CheckAmmountFilter implements FilterInterface
         $db = \Config\Database::connect();
         $query = $db->query($sql);
         $request = $query->getRowArray();
-        // dd($request);
-        if(empty($request)) return redirect()->to('/getstartammount');
+        //dd($request);
+        if($request === null) return redirect()->to('/getstartammount');
         if($request['zeit'] === NULL) return redirect()->to('/getstartammount');
     }
 
