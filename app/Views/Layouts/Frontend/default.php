@@ -52,7 +52,7 @@
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-            <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+            <a href="<?= site_url('/') ?>" class="navbar-brand ms-4 ms-lg-0">
                 <h1 class="display-5 text-primary m-0">HausHaltsBuch</h1>
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -1001,6 +1001,17 @@
             });
         </script>
     <?php endif; ?>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if(window.location.href.indexOf('#loginModal') != -1) {
+                $('#loginModal').modal('show');
+            }
+            if(window.location.href.indexOf('#registerModal') != -1) {
+                $('#registerModal').modal('show');
+            }
+        });
+    </script>
 </body>
 
 </html>

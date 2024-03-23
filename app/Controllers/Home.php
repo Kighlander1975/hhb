@@ -17,4 +17,13 @@ class Home extends BaseController
             'user' => $this->user,
         ]);
     }
+
+    public function login()
+    {
+        return redirect()->to('/#loginModal');
+    }
+    public function register()
+    {
+        return redirect()->to('/#registerModal');
+    }
 }

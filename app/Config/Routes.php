@@ -56,8 +56,8 @@ $routes->post('/step1', 'Bookings::step1');
 
 service('auth')->routes($routes, ['except' => ['login','register']]);
 
-$routes->get('login', 'Home::index');
-$routes->get('register', 'Home::index');
+$routes->get('login', 'Home::login');
+$routes->get('register', 'Home::register');
 
 /*
  * --------------------------------------------------------------------
